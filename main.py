@@ -20,7 +20,6 @@ class CyclotronApp:
             "Jon Węgla (C12)": {"m": 1.99e-26, "q": 9.61e-19, "color": "#2ca02c", "desc": "Bardzo ciężki, jon dodatni"}
         }
 
-        # --- Zmienne stanu ---
         self.is_running = False
         self.pos = np.array([0.0, 0.0])
         self.vel = np.array([0.0, 0.0])
@@ -28,7 +27,6 @@ class CyclotronApp:
         self.history = []
         self.phys_widgets = []
 
-        # --- Zmienne UI ---
         self.selected_particle = tk.StringVar(value="Proton")
         self.b_field = tk.DoubleVar(value=1.5)
         self.voltage = tk.DoubleVar(value=15000)
@@ -191,12 +189,11 @@ class CyclotronApp:
             self.status_box.config(text="ZAKRZYWIANIE (POLE B)", bg='#2c3e50')
         self.canvas.draw_idle()
 
-    # NOWA METODA: Czyści pamięć i zamyka wszystkie okna
     def on_closing(self):
-        self.is_running = False  # Zatrzymuje animate()
-        plt.close('all')        # Zamyka okna wykresów Matplotlib
-        self.root.destroy()     # Zamyka okno Tkinter
-        sys.exit()              # Kończy proces Pythona
+        self.is_running = False
+        plt.close('all')
+        self.root.destroy()
+        sys.exit()
 
 if __name__ == "__main__":
     root = tk.Tk()
